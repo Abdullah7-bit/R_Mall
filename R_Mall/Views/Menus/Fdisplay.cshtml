@@ -1,0 +1,41 @@
+﻿@model IEnumerable<R_Mall.Models.Menu>
+@{
+    ViewBag.Title = "Fdisplay";
+}
+
+<div class="container">
+    <div class="row">
+
+        @foreach (var item in Model)
+        {
+
+            <div class="col-sm-4 p-1">
+                <div class="card p-2" style="width: 18rem;">
+                    <img src="~/img/food.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            @Html.DisplayFor(modelItem => item.Food_Name)
+                        </h5>
+                        <p class="card-text">
+                          Enjoy food in amazing environment.
+                        </p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <h6>Time: </h6>
+                            @Html.DisplayFor(modelItem => item.Food_Price)
+                        </li>
+                        
+                    </ul>
+                    <div class="card-body ">
+                        <p class="btn btn-dark text-black">
+                            <a href="@Url.Action("Index","Orders")">Order Here</a>
+                        </p>
+                    </div>
+                </div>
+            </div>              
+               
+        }
+
+    </div>
+</div>

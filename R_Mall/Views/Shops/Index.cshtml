@@ -1,0 +1,56 @@
+﻿@model IEnumerable<R_Mall.Models.Shop>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_theme.cshtml";
+}
+
+<h2>Shops</h2>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Shop_Number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Shop_Owner)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Shop_Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Shop_Products)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Shop_Number)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Shop_Owner)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Shop_Type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Shop_Products)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Shop_Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Shop_Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Shop_Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+
+
+

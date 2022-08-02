@@ -1,0 +1,50 @@
+﻿@model IEnumerable<R_Mall.Models.Movy>
+
+@{
+    ViewBag.Title = "Displayed";
+
+
+}
+
+<div class="container">
+    <div class="row">
+
+        @foreach (var item in Model)
+        {
+
+            <div class="col-sm-4">
+                <div class="card p-2" style="width: 18rem;">
+                    <img src="~/img/cinema.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            @Html.DisplayFor(modelItem => item.M_Name)
+                        </h5>
+                        <p class="card-text">
+                            @Html.DisplayFor(modelItem => item.M_Description)
+                        </p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <h6>Time: </h6>
+                            @Html.DisplayFor(modelItem => item.M_Time)
+                        </li>
+                        <li class="list-group-item">
+                            <h6>Status: </h6>
+                            @Html.DisplayFor(modelItem => item.M_Status)
+                        </li>
+                    </ul>
+                    <div class="card-body ">
+                        <p class="btn btn-dark text-black">
+                            @Html.ActionLink("Create New", "Create")
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+        }
+
+
+    </div>
+</div>
+

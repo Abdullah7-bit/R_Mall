@@ -1,0 +1,42 @@
+﻿@model R_Mall.Models.Order
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Order</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Order_Number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Order_Number)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Menu.Food_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Menu.Food_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Table.T_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Table.T_Id)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Order_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

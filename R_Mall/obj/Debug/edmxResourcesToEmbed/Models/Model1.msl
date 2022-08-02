@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="RmallModelStoreContainer" CdmEntityContainer="RmallEntities">
+    <EntitySetMapping Name="Feedbacks">
+      <EntityTypeMapping TypeName="RmallModel.Feedback">
+        <MappingFragment StoreEntitySet="Feedback">
+          <ScalarProperty Name="Fdbk_Id" ColumnName="Fdbk_Id" />
+          <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Menus">
+      <EntityTypeMapping TypeName="RmallModel.Menu">
+        <MappingFragment StoreEntitySet="Menu">
+          <ScalarProperty Name="Menu_Id" ColumnName="Menu_Id" />
+          <ScalarProperty Name="Food_Name" ColumnName="Food_Name" />
+          <ScalarProperty Name="Food_Price" ColumnName="Food_Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Movies">
+      <EntityTypeMapping TypeName="RmallModel.Movy">
+        <MappingFragment StoreEntitySet="Movies">
+          <ScalarProperty Name="M_Id" ColumnName="M_Id" />
+          <ScalarProperty Name="M_Name" ColumnName="M_Name" />
+          <ScalarProperty Name="M_Description" ColumnName="M_Description" />
+          <ScalarProperty Name="M_Time" ColumnName="M_Time" />
+          <ScalarProperty Name="M_Status" ColumnName="M_Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="RmallModel.Order">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="Order_Id" ColumnName="Order_Id" />
+          <ScalarProperty Name="Order_Number" ColumnName="Order_Number" />
+          <ScalarProperty Name="T_Id" ColumnName="T_Id" />
+          <ScalarProperty Name="Menu_Id" ColumnName="Menu_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Seats">
+      <EntityTypeMapping TypeName="RmallModel.Seat">
+        <MappingFragment StoreEntitySet="Seats">
+          <ScalarProperty Name="st_Id" ColumnName="st_Id" />
+          <ScalarProperty Name="st_No" ColumnName="st_No" />
+          <ScalarProperty Name="Total_Seats" ColumnName="Total_Seats" />
+          <ScalarProperty Name="Seat_Booked" ColumnName="Seat_Booked" />
+          <ScalarProperty Name="Seat_Available" ColumnName="Seat_Available" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Shops">
+      <EntityTypeMapping TypeName="RmallModel.Shop">
+        <MappingFragment StoreEntitySet="Shops">
+          <ScalarProperty Name="Shop_Id" ColumnName="Shop_Id" />
+          <ScalarProperty Name="Shop_Number" ColumnName="Shop_Number" />
+          <ScalarProperty Name="Shop_Owner" ColumnName="Shop_Owner" />
+          <ScalarProperty Name="Shop_Type" ColumnName="Shop_Type" />
+          <ScalarProperty Name="Shop_Products" ColumnName="Shop_Products" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tables">
+      <EntityTypeMapping TypeName="RmallModel.Table">
+        <MappingFragment StoreEntitySet="Tables">
+          <ScalarProperty Name="T_Id" ColumnName="T_Id" />
+          <ScalarProperty Name="T_Number" ColumnName="T_Number" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tickets">
+      <EntityTypeMapping TypeName="RmallModel.Ticket">
+        <MappingFragment StoreEntitySet="Tickets">
+          <ScalarProperty Name="T_Id" ColumnName="T_Id" />
+          <ScalarProperty Name="T_Price" ColumnName="T_Price" />
+          <ScalarProperty Name="st_Id" ColumnName="st_Id" />
+          <ScalarProperty Name="M_Id" ColumnName="M_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="RmallModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

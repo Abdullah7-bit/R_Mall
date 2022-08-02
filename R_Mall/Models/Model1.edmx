@@ -1,0 +1,445 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="RmallModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Feedback">
+          <Key>
+            <PropertyRef Name="Fdbk_Id" />
+          </Key>
+          <Property Name="Fdbk_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_Name" Type="varchar" MaxLength="20" />
+          <Property Name="Message" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="Menu_Id" />
+          </Key>
+          <Property Name="Menu_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Food_Name" Type="varchar" MaxLength="30" />
+          <Property Name="Food_Price" Type="int" />
+        </EntityType>
+        <EntityType Name="Movies">
+          <Key>
+            <PropertyRef Name="M_Id" />
+          </Key>
+          <Property Name="M_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="M_Name" Type="varchar" MaxLength="30" />
+          <Property Name="M_Description" Type="varchar" MaxLength="40" />
+          <Property Name="M_Time" Type="varchar" MaxLength="40" />
+          <Property Name="M_Status" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="Order_Id" />
+          </Key>
+          <Property Name="Order_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Order_Number" Type="int" />
+          <Property Name="T_Id" Type="int" />
+          <Property Name="Menu_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="Seats">
+          <Key>
+            <PropertyRef Name="st_Id" />
+          </Key>
+          <Property Name="st_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="st_No" Type="int" />
+          <Property Name="Total_Seats" Type="int" />
+          <Property Name="Seat_Booked" Type="varchar" MaxLength="20" />
+          <Property Name="Seat_Available" Type="int" />
+        </EntityType>
+        <EntityType Name="Shops">
+          <Key>
+            <PropertyRef Name="Shop_Id" />
+          </Key>
+          <Property Name="Shop_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Shop_Number" Type="int" />
+          <Property Name="Shop_Owner" Type="varchar" MaxLength="20" />
+          <Property Name="Shop_Type" Type="varchar" MaxLength="20" />
+          <Property Name="Shop_Products" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Tables">
+          <Key>
+            <PropertyRef Name="T_Id" />
+          </Key>
+          <Property Name="T_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="T_Number" Type="int" />
+        </EntityType>
+        <EntityType Name="Tickets">
+          <Key>
+            <PropertyRef Name="T_Id" />
+          </Key>
+          <Property Name="T_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="T_Price" Type="int" />
+          <Property Name="st_Id" Type="int" />
+          <Property Name="M_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="userid" />
+          </Key>
+          <Property Name="userid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="20" />
+          <Property Name="password" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <Association Name="FK__Orders__Menu_Id__4316F928">
+          <End Role="Menu" Type="Self.Menu" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="Menu_Id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="Menu_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders__T_Id__4222D4EF">
+          <End Role="Tables" Type="Self.Tables" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tables">
+              <PropertyRef Name="T_Id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="T_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tickets__M_Id__3B75D760">
+          <End Role="Movies" Type="Self.Movies" Multiplicity="0..1" />
+          <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movies">
+              <PropertyRef Name="M_Id" />
+            </Principal>
+            <Dependent Role="Tickets">
+              <PropertyRef Name="M_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tickets__st_Id__3A81B327">
+          <End Role="Seats" Type="Self.Seats" Multiplicity="0..1" />
+          <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Seats">
+              <PropertyRef Name="st_Id" />
+            </Principal>
+            <Dependent Role="Tickets">
+              <PropertyRef Name="st_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RmallModelStoreContainer">
+          <EntitySet Name="Feedback" EntityType="Self.Feedback" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Movies" EntityType="Self.Movies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Seats" EntityType="Self.Seats" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Shops" EntityType="Self.Shops" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tables" EntityType="Self.Tables" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tickets" EntityType="Self.Tickets" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Orders__Menu_Id__4316F928" Association="Self.FK__Orders__Menu_Id__4316F928">
+            <End Role="Menu" EntitySet="Menu" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__T_Id__4222D4EF" Association="Self.FK__Orders__T_Id__4222D4EF">
+            <End Role="Tables" EntitySet="Tables" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tickets__M_Id__3B75D760" Association="Self.FK__Tickets__M_Id__3B75D760">
+            <End Role="Movies" EntitySet="Movies" />
+            <End Role="Tickets" EntitySet="Tickets" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tickets__st_Id__3A81B327" Association="Self.FK__Tickets__st_Id__3A81B327">
+            <End Role="Seats" EntitySet="Seats" />
+            <End Role="Tickets" EntitySet="Tickets" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RmallModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Feedback">
+          <Key>
+            <PropertyRef Name="Fdbk_Id" />
+          </Key>
+          <Property Name="Fdbk_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Message" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="Menu_Id" />
+          </Key>
+          <Property Name="Menu_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Food_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Food_Price" Type="Int32" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__Menu_Id__4316F928" FromRole="Menu" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="Movy">
+          <Key>
+            <PropertyRef Name="M_Id" />
+          </Key>
+          <Property Name="M_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="M_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="M_Description" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="M_Time" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="M_Status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Tickets" Relationship="Self.FK__Tickets__M_Id__3B75D760" FromRole="Movies" ToRole="Tickets" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Order_Id" />
+          </Key>
+          <Property Name="Order_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Order_Number" Type="Int32" />
+          <Property Name="T_Id" Type="Int32" />
+          <Property Name="Menu_Id" Type="Int32" />
+          <NavigationProperty Name="Menu" Relationship="Self.FK__Orders__Menu_Id__4316F928" FromRole="Orders" ToRole="Menu" />
+          <NavigationProperty Name="Table" Relationship="Self.FK__Orders__T_Id__4222D4EF" FromRole="Orders" ToRole="Tables" />
+        </EntityType>
+        <EntityType Name="Seat">
+          <Key>
+            <PropertyRef Name="st_Id" />
+          </Key>
+          <Property Name="st_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="st_No" Type="Int32" />
+          <Property Name="Total_Seats" Type="Int32" />
+          <Property Name="Seat_Booked" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Seat_Available" Type="Int32" />
+          <NavigationProperty Name="Tickets" Relationship="Self.FK__Tickets__st_Id__3A81B327" FromRole="Seats" ToRole="Tickets" />
+        </EntityType>
+        <EntityType Name="Shop">
+          <Key>
+            <PropertyRef Name="Shop_Id" />
+          </Key>
+          <Property Name="Shop_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Shop_Number" Type="Int32" />
+          <Property Name="Shop_Owner" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Shop_Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Shop_Products" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Table">
+          <Key>
+            <PropertyRef Name="T_Id" />
+          </Key>
+          <Property Name="T_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="T_Number" Type="Int32" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__T_Id__4222D4EF" FromRole="Tables" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="Ticket">
+          <Key>
+            <PropertyRef Name="T_Id" />
+          </Key>
+          <Property Name="T_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="T_Price" Type="Int32" />
+          <Property Name="st_Id" Type="Int32" />
+          <Property Name="M_Id" Type="Int32" />
+          <NavigationProperty Name="Movy" Relationship="Self.FK__Tickets__M_Id__3B75D760" FromRole="Tickets" ToRole="Movies" />
+          <NavigationProperty Name="Seat" Relationship="Self.FK__Tickets__st_Id__3A81B327" FromRole="Tickets" ToRole="Seats" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="userid" />
+          </Key>
+          <Property Name="userid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK__Orders__Menu_Id__4316F928">
+          <End Role="Menu" Type="Self.Menu" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="Menu_Id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="Menu_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tickets__M_Id__3B75D760">
+          <End Role="Movies" Type="Self.Movy" Multiplicity="0..1" />
+          <End Role="Tickets" Type="Self.Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movies">
+              <PropertyRef Name="M_Id" />
+            </Principal>
+            <Dependent Role="Tickets">
+              <PropertyRef Name="M_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders__T_Id__4222D4EF">
+          <End Role="Tables" Type="Self.Table" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tables">
+              <PropertyRef Name="T_Id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="T_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tickets__st_Id__3A81B327">
+          <End Role="Seats" Type="Self.Seat" Multiplicity="0..1" />
+          <End Role="Tickets" Type="Self.Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Seats">
+              <PropertyRef Name="st_Id" />
+            </Principal>
+            <Dependent Role="Tickets">
+              <PropertyRef Name="st_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RmallEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Feedbacks" EntityType="Self.Feedback" />
+          <EntitySet Name="Menus" EntityType="Self.Menu" />
+          <EntitySet Name="Movies" EntityType="Self.Movy" />
+          <EntitySet Name="Orders" EntityType="Self.Order" />
+          <EntitySet Name="Seats" EntityType="Self.Seat" />
+          <EntitySet Name="Shops" EntityType="Self.Shop" />
+          <EntitySet Name="Tables" EntityType="Self.Table" />
+          <EntitySet Name="Tickets" EntityType="Self.Ticket" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK__Orders__Menu_Id__4316F928" Association="Self.FK__Orders__Menu_Id__4316F928">
+            <End Role="Menu" EntitySet="Menus" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tickets__M_Id__3B75D760" Association="Self.FK__Tickets__M_Id__3B75D760">
+            <End Role="Movies" EntitySet="Movies" />
+            <End Role="Tickets" EntitySet="Tickets" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__T_Id__4222D4EF" Association="Self.FK__Orders__T_Id__4222D4EF">
+            <End Role="Tables" EntitySet="Tables" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tickets__st_Id__3A81B327" Association="Self.FK__Tickets__st_Id__3A81B327">
+            <End Role="Seats" EntitySet="Seats" />
+            <End Role="Tickets" EntitySet="Tickets" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RmallModelStoreContainer" CdmEntityContainer="RmallEntities">
+          <EntitySetMapping Name="Feedbacks">
+            <EntityTypeMapping TypeName="RmallModel.Feedback">
+              <MappingFragment StoreEntitySet="Feedback">
+                <ScalarProperty Name="Fdbk_Id" ColumnName="Fdbk_Id" />
+                <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Menus">
+            <EntityTypeMapping TypeName="RmallModel.Menu">
+              <MappingFragment StoreEntitySet="Menu">
+                <ScalarProperty Name="Menu_Id" ColumnName="Menu_Id" />
+                <ScalarProperty Name="Food_Name" ColumnName="Food_Name" />
+                <ScalarProperty Name="Food_Price" ColumnName="Food_Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Movies">
+            <EntityTypeMapping TypeName="RmallModel.Movy">
+              <MappingFragment StoreEntitySet="Movies">
+                <ScalarProperty Name="M_Id" ColumnName="M_Id" />
+                <ScalarProperty Name="M_Name" ColumnName="M_Name" />
+                <ScalarProperty Name="M_Description" ColumnName="M_Description" />
+                <ScalarProperty Name="M_Time" ColumnName="M_Time" />
+                <ScalarProperty Name="M_Status" ColumnName="M_Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="RmallModel.Order">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="Order_Id" ColumnName="Order_Id" />
+                <ScalarProperty Name="Order_Number" ColumnName="Order_Number" />
+                <ScalarProperty Name="T_Id" ColumnName="T_Id" />
+                <ScalarProperty Name="Menu_Id" ColumnName="Menu_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Seats">
+            <EntityTypeMapping TypeName="RmallModel.Seat">
+              <MappingFragment StoreEntitySet="Seats">
+                <ScalarProperty Name="st_Id" ColumnName="st_Id" />
+                <ScalarProperty Name="st_No" ColumnName="st_No" />
+                <ScalarProperty Name="Total_Seats" ColumnName="Total_Seats" />
+                <ScalarProperty Name="Seat_Booked" ColumnName="Seat_Booked" />
+                <ScalarProperty Name="Seat_Available" ColumnName="Seat_Available" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Shops">
+            <EntityTypeMapping TypeName="RmallModel.Shop">
+              <MappingFragment StoreEntitySet="Shops">
+                <ScalarProperty Name="Shop_Id" ColumnName="Shop_Id" />
+                <ScalarProperty Name="Shop_Number" ColumnName="Shop_Number" />
+                <ScalarProperty Name="Shop_Owner" ColumnName="Shop_Owner" />
+                <ScalarProperty Name="Shop_Type" ColumnName="Shop_Type" />
+                <ScalarProperty Name="Shop_Products" ColumnName="Shop_Products" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tables">
+            <EntityTypeMapping TypeName="RmallModel.Table">
+              <MappingFragment StoreEntitySet="Tables">
+                <ScalarProperty Name="T_Id" ColumnName="T_Id" />
+                <ScalarProperty Name="T_Number" ColumnName="T_Number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tickets">
+            <EntityTypeMapping TypeName="RmallModel.Ticket">
+              <MappingFragment StoreEntitySet="Tickets">
+                <ScalarProperty Name="T_Id" ColumnName="T_Id" />
+                <ScalarProperty Name="T_Price" ColumnName="T_Price" />
+                <ScalarProperty Name="st_Id" ColumnName="st_Id" />
+                <ScalarProperty Name="M_Id" ColumnName="M_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="RmallModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

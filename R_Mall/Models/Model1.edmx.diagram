@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a5aeed7528b5480c8206dc9ee5ce3511" Name="Diagram1">
+        <EntityTypeShape EntityType="RmallModel.Feedback" Width="1.5" PointX="10.125" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="RmallModel.Menu" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RmallModel.Movy" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="RmallModel.Order" Width="1.5" PointX="2.5" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RmallModel.Seat" Width="1.5" PointX="5" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RmallModel.Shop" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RmallModel.Table" Width="1.5" PointX="4.5" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RmallModel.Ticket" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="RmallModel.User" Width="1.5" PointX="9" PointY="3" IsExpanded="true" />
+        <AssociationConnector Association="RmallModel.FK__Orders__Menu_Id__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="RmallModel.FK__Tickets__M_Id__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="RmallModel.FK__Orders__T_Id__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="RmallModel.FK__Tickets__st_Id__3A81B327" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

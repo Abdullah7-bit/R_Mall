@@ -1,0 +1,102 @@
+﻿@model R_Mall.Models.User
+@{
+    ViewBag.Title = "Login";
+    Layout = null;
+}
+
+
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.84.0">
+    <title>Signin Template · Bootstrap v5.0</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
+
+    <link href="~/Content/bootstrap.min.css.map" rel="stylesheet" />
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/signin/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+    </style>
+
+
+    <!-- Custom styles for this template -->
+    <link href="~/signin/signin.css" rel="stylesheet">
+</head>
+<body class="text-center">
+
+    <main class="form-signin">
+
+
+        @using (Html.BeginForm())
+        {
+
+            <h1 class="h3 mb-3 fw-normal">Admin Login</h1>
+
+
+
+
+            <div class="form-floating">
+                @*<input type="email" class="form-control" id="floatingInput" placeholder="">*@
+                @*<label for="floatingInput">User</label>*@
+
+                @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "form-control" } })
+
+                @Html.LabelFor(model => model.username, htmlAttributes: new { @class = "control-label col-md-2" })
+            </div>
+
+
+
+            <div class="form-floating">
+                @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control" } })
+
+                @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                @*<input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                    <label for="floatingPassword">Password</label>*@
+
+            </div>
+
+            <div class="checkbox mt-2 mb-3">
+                <label>
+                    <a href=" @Url.Action("Index","Home")">If your are not an admin click here</a>
+                </label>
+            </div>
+
+            <div class="form-floating">
+                <input type="submit" value="Sign in" class="w-100 btn btn-lg btn-primary" />
+            </div>
+
+
+
+
+            <h4 class="text-danger pt-3">@ViewBag.msg</h4>
+
+
+
+
+
+
+
+
+        }
+
+
+    </main>
+
+</body>
+</html>
+

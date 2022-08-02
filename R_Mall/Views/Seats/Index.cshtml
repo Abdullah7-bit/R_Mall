@@ -1,0 +1,52 @@
+﻿@model IEnumerable<R_Mall.Models.Seat>
+
+@{
+    ViewBag.Title = "Index";
+
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.st_No)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Total_Seats)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Seat_Booked)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Seat_Available)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.st_No)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Total_Seats)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Seat_Booked)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Seat_Available)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.st_Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.st_Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.st_Id })
+        </td>
+    </tr>
+}
+
+</table>
